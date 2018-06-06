@@ -21,7 +21,10 @@
         <activity android:name=".ActivityListRecetas" />
         <activity android:name=".ActivityListEjercicios" />
         <activity android:name=".ActivityObjetivos" />
-        <activity android:name=".ActivityEditMacronProteinas"></activity>
+        <activity android:name=".ActivityEditMacronProteinas" />
+        <activity android:name=".ActivityCreateAlimento" />
+        <activity android:name=".ActivityCreateReceta" />
+        <activity android:name=".ActivityCreateEjercicios"></activity>
     </application>
 
 </manifest>

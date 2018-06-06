@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //CONEXION SQLITE
+        ConexionSqliteHelper conn = new ConexionSqliteHelper(this,"bd alimentos",null,1);
+        /////////////////
         btnAlimentos = (ImageButton) findViewById(R.id.bDiario);
         btnObjetivos = (ImageButton) findViewById(R.id.bObjetivos);
         btnReportes = (ImageButton) findViewById(R.id.bReportes);
