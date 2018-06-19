@@ -63,6 +63,10 @@ public class ActivityListAlimentos extends AppCompatActivity {
         alimentos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //AQUI DEBE IR EL CONETEXTMENU PARA AGREGAR UN REGISTRO DEBE SER DE DOS OPCIONES PREGUNTAR SI SE QUIERE AGREGAR
+                //EL ALIMENTO O NO, AL AGREGARSE OBVIAMENTE DEBES CREAR UNA CONSULTA SQL PARA AGREGAR EL REGISTRO A LA TABLA REGISTROS
+
                 Toast.makeText(parent.getContext(),"SELECCIONASTE: "
                         +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
             }
