@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="spinnerTipoCantidad" >
+        <item>Gramos</item>
+        <item>Tazas</item>
+        <item>Cucharadas</item>
+    </string-array>
+</resources>

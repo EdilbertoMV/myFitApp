@@ -10,6 +10,8 @@ public class Alimento {
     private Integer cantidad;
     private String tipoCantidad;
 
+    public Alimento(){}
+
     public Alimento(Integer id, String nombre, Integer calorias, Integer carbohidratos, Integer grasas, Integer cantidad, String tipoCantidad) {
         this.id = id;
         this.nombre = nombre;

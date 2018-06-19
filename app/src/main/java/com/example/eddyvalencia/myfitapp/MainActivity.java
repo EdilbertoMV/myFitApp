@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         //CONEXION SQLITE
         ConexionSqliteHelper conn = new ConexionSqliteHelper(this,"bd alimentos",null,1);
+        conn.close();
         /////////////////
         btnAlimentos = (ImageButton) findViewById(R.id.bDiario);
         btnObjetivos = (ImageButton) findViewById(R.id.bObjetivos);
