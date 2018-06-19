@@ -42,21 +42,21 @@ public class ActivityCreateAlimento extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ConexionSqliteHelper conn = new ConexionSqliteHelper(getApplicationContext(),"bd alimentos",null,1);
+                ConexionSqliteHelper conn = new ConexionSqliteHelper(getApplicationContext(),"bd fitness",null,1);
 
                 SQLiteDatabase db = conn.getWritableDatabase();
 
-                String insert = "INSERT INTO" + Utilidades.TABLA_ALIMENTO
+                String insert = "INSERT INTO " + Utilidades.TABLA_ALIMENTO
                         + " (" + Utilidades.CAMPO_ID + ", "
-                        +" (" + Utilidades.CAMPO_NOMBRE + ", "
-                        +" (" + Utilidades.CAMPO_TIPO_CANTIDAD + ", "
-                        +" (" + Utilidades.CAMPO_CANTIDAD + ", "
-                        +" (" + Utilidades.CAMPO_CALORIAS + ", "
-                        +" (" + Utilidades.CAMPO_CARBOHIDRATOS + ", "
-                        +" (" + Utilidades.CAMPO_GRASAS + ") "
-                        +"values ( null, '"+nombre.getText().toString()+"','"+tipoCantidad.getSelectedItem().toString()
-                        +"','"+cantidad.getText().toString()+"','"+calorias.getText().toString()
-                        +"','"+carbohidratos.getText().toString()+"','"+grasas.getText().toString()+"')";
+                        + Utilidades.CAMPO_NOMBRE + ", "
+                        + Utilidades.CAMPO_TIPO_CANTIDAD + ", "
+                        + Utilidades.CAMPO_CANTIDAD + ", "
+                        + Utilidades.CAMPO_CALORIAS + ", "
+                        + Utilidades.CAMPO_CARBOHIDRATOS + ", "
+                        + Utilidades.CAMPO_GRASAS + ") "
+                        +"VALUES (null, '"+nombre.getText().toString()+"','"+tipoCantidad.getSelectedItem().toString()
+                        +"',"+cantidad.getText()+","+calorias.getText().toString()
+                        +","+carbohidratos.getText().toString()+","+grasas.getText().toString()+")";
 
                 db.execSQL(insert);
                 db.close();

@@ -34,7 +34,7 @@ public class ActivityListAlimentos extends AppCompatActivity {
 
         alimentos = (ListView) findViewById(R.id.lvAlimentos);
 
-        conn = new ConexionSqliteHelper(getApplicationContext(),"bd alimentos",null,1);
+        conn = new ConexionSqliteHelper(getApplicationContext(),"bd fitness",null,1);
 
         consultarListaAlimentos();
 
@@ -67,11 +67,12 @@ public class ActivityListAlimentos extends AppCompatActivity {
 
             alimento=new Alimento();
             alimento.setId(cursor.getInt(0));
-            alimento.setTipoCantidad(cursor.getString(0));
-            alimento.setCantidad(cursor.getInt(0));
-            alimento.setCalorias(cursor.getInt(0));
-            alimento.setCarbohidratos(cursor.getInt(0));
-            alimento.setGrasas(cursor.getInt(0));
+            alimento.setNombre(cursor.getString(1));
+            alimento.setTipoCantidad(cursor.getString(2));
+            alimento.setCantidad(cursor.getInt(3));
+            alimento.setCalorias(cursor.getInt(4));
+            alimento.setCarbohidratos(cursor.getInt(5));
+            alimento.setGrasas(cursor.getInt(6));
 
             listaAlimentos.add(alimento);
 

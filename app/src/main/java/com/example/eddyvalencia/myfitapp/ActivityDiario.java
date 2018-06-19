@@ -92,12 +92,12 @@ public class ActivityDiario extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_alimentos:
 
-                Intent intent = new Intent(ActivityDiario.this, ActivityListAlimentos.class);
+                Intent intent = new Intent(ActivityDiario.this, ActivityCreateAlimento.class);
                 startActivity(intent);
 
                 return true;
             case R.id.menu_receta:
-                Intent intent2 = new Intent(ActivityDiario.this, ActivityListRecetas.class);
+                Intent intent2 = new Intent(ActivityDiario.this, ActivityListAlimentos.class);
                 startActivity(intent2);
 
                 return true;

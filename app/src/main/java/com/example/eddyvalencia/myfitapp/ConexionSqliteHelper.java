@@ -26,5 +26,6 @@ public class ConexionSqliteHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS alimentos");
         db.execSQL("DROP TABLE IF EXISTS recetas");
+        onCreate(db);
     }
 }
