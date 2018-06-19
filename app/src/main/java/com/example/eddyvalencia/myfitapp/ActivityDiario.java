@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 
 public class ActivityDiario extends AppCompatActivity {
     private View btnDesayuno, btnAlmuerzo, btnComida, btnSnacks, btnEjercicios;
+    private String tipoComida;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,10 @@ public class ActivityDiario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                tipoComida = "Desayuno";
                 registerForContextMenu(v);
                 openContextMenu(v);
+
 
             }
         });
@@ -38,6 +41,7 @@ public class ActivityDiario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                tipoComida = "Almuerzo";
                 registerForContextMenu(v);
                 openContextMenu(v);
 
@@ -48,6 +52,7 @@ public class ActivityDiario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                tipoComida = "Comida";
                 registerForContextMenu(v);
                 openContextMenu(v);
 
@@ -58,6 +63,7 @@ public class ActivityDiario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                tipoComida = "Snacks";
                 registerForContextMenu(v);
                 openContextMenu(v);
 
@@ -89,15 +95,20 @@ public class ActivityDiario extends AppCompatActivity {
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
+        Bundle miBundle = new Bundle();
+        miBundle.putString("tipoComida", tipoComida);
+
         switch (item.getItemId()){
             case R.id.menu_alimentos:
 
-                Intent intent = new Intent(ActivityDiario.this, ActivityCreateAlimento.class);
+                Intent intent = new Intent(ActivityDiario.this, ActivityListAlimentos.class);
+                intent.putExtras(miBundle);
                 startActivity(intent);
 
                 return true;
             case R.id.menu_receta:
-                Intent intent2 = new Intent(ActivityDiario.this, ActivityListAlimentos.class);
+                Intent intent2 = new Intent(ActivityDiario.this, ActivityListRecetas.class);
+                intent2.putExtras(miBundle);
                 startActivity(intent2);
 
                 return true;

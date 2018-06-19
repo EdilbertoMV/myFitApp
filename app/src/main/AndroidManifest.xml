@@ -17,8 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityDiario" />
-        <activity android:name=".ActivityListRecetas" />
-        <activity android:name=".ActivityListEjercicios" />
         <activity android:name=".ActivityObjetivos" />
         <activity android:name=".ActivityEditMacronProteinas" />
         <activity android:name=".ActivityCreateAlimento" />
@@ -27,7 +25,15 @@
         <activity
             android:name=".ActivityListAlimentos"
             android:label="@string/title_activity_list_alimentos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActivityListRecetas"
+            android:label="@string/title_activity_list_recetas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActivityListEjercicios"
+            android:label="@string/title_activity_list_ejercicios"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

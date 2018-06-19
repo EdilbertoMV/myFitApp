@@ -9,14 +9,19 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.eddyvalencia.myfitapp.entidades.Alimento;
 import com.example.eddyvalencia.myfitapp.utilidades.Utilidades;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ActivityListAlimentos extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class ActivityListAlimentos extends AppCompatActivity {
     ConexionSqliteHelper conn;
     ArrayList<String> listaInformacion;
     ArrayList<Alimento> listaAlimentos;
+    private String tipoComida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,19 @@ public class ActivityListAlimentos extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date date = new Date();
+
+        String fecha = dateFormat.format(date);
+
         alimentos = (ListView) findViewById(R.id.lvAlimentos);
+
+        Bundle miBundle = this.getIntent().getExtras();
+
+        if(miBundle!=null){
+
+            tipoComida = miBundle.getString("tipoComida");
+        }
 
         conn = new ConexionSqliteHelper(getApplicationContext(),"bd fitness",null,1);
 
@@ -41,6 +59,16 @@ public class ActivityListAlimentos extends AppCompatActivity {
         ArrayAdapter adaptador = new ArrayAdapter(this,android.R.layout.simple_list_item_1,listaInformacion);
         alimentos.setAdapter(adaptador);
 
+
+        alimentos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(parent.getContext(),"SELECCIONASTE: "
+                        +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +76,7 @@ public class ActivityListAlimentos extends AppCompatActivity {
 
                 Intent intent = new Intent(ActivityListAlimentos.this, ActivityCreateAlimento.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -87,8 +116,7 @@ public class ActivityListAlimentos extends AppCompatActivity {
 
         for(int i=0; i<listaAlimentos.size();i++){
 
-            listaInformacion.add(listaAlimentos.get(i).getId()+" - "
-                    +listaAlimentos.get(i).getNombre());
+            listaInformacion.add(listaAlimentos.get(i).getNombre());
         }
     }
 

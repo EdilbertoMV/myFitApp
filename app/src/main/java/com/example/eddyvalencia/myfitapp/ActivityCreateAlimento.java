@@ -60,6 +60,10 @@ public class ActivityCreateAlimento extends AppCompatActivity {
 
                 db.execSQL(insert);
                 db.close();
+
+                Intent intent = new Intent(ActivityCreateAlimento.this, ActivityListAlimentos.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
