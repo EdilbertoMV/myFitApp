@@ -5,11 +5,11 @@ public class Registros {
     private Integer id;
     private String fecha;
     private String tipoComida;
-    private Integer idComida;
+    private String idComida;
 
     public Registros(){}
 
-    public Registros(Integer id, String fecha, String tipoComida, Integer idComida) {
+    public Registros(Integer id, String fecha, String tipoComida, String idComida) {
         this.id = id;
         this.fecha = fecha;
         this.tipoComida = tipoComida;
@@ -40,11 +40,11 @@ public class Registros {
         this.tipoComida = tipoComida;
     }
 
-    public Integer getIdComida() {
+    public String getIdComida() {
         return idComida;
     }
 
-    public void setIdComida(Integer idComida) {
+    public void setIdComida(String idComida) {
         this.idComida = idComida;
     }
 }

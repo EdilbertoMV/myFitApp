@@ -33,6 +33,7 @@ public class ActivityListAlimentos extends AppCompatActivity {
     ArrayList<String> listaInformacion;
     ArrayList<Alimento> listaAlimentos;
     private String tipoComida;
+    public String fecha, idComida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class ActivityListAlimentos extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
 
-        String fecha = dateFormat.format(date);
+        fecha = dateFormat.format(date);
 
         alimentos = (ListView) findViewById(R.id.lvAlimentos);
 
@@ -67,11 +68,10 @@ public class ActivityListAlimentos extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //AQUI DEBE IR EL CONETEXTMENU PARA AGREGAR UN REGISTRO DEBE SER DE DOS OPCIONES PREGUNTAR SI SE QUIERE AGREGAR
-                //EL ALIMENTO O NO, AL AGREGARSE OBVIAMENTE DEBES CREAR UNA CONSULTA SQL PARA AGREGAR EL REGISTRO A LA TABLA REGISTROS
-
                 registerForContextMenu(view);
                 openContextMenu(view);
+
+                idComida = parent.getItemAtPosition(position).toString();
 
                 Toast.makeText(parent.getContext(),"SELECCIONASTE: "
                         +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
@@ -112,6 +112,20 @@ public class ActivityListAlimentos extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_registrar:
 
+                ConexionSqliteHelper conn = new ConexionSqliteHelper(getApplicationContext(),"bd fitness",null,1);
+
+                SQLiteDatabase db = conn.getWritableDatabase();
+
+                String insert = "INSERT INTO " + Utilidades.TABLA_REGISTROS
+                        + " (" + Utilidades.CAMPO_ID + ", "
+                        + Utilidades.CAMPO_FECHA + ", "
+                        + Utilidades.CAMPO_TIPO_COMIDA + ", "
+                        + Utilidades.CAMPO_ID_COMIDA + ") "
+                        +"VALUES (null,'"+fecha+"','"+tipoComida
+                        +"','"+idComida+"')";
+
+                db.execSQL(insert);
+                db.close();
                 finish();
 
                 return true;

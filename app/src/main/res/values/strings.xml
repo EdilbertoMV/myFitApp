@@ -4,4 +4,5 @@
     <string name="title_activity_list_recetas">ActivityListRecetas</string>
     <string name="title_activity_list_ejercicios">ActivityListEjercicios</string>
     <string name="title_activity_jejeje">JEJEJE</string>
+    <string name="title_activity_list_registros">ActivityListRegistros</string>
 </resources>

@@ -107,8 +107,8 @@ public class ActivityDiario extends AppCompatActivity {
 
                 return true;
             case R.id.menu_receta:
-                Intent intent2 = new Intent(ActivityDiario.this, ActivityListRecetas.class);
-                intent2.putExtras(miBundle);
+                Intent intent2 = new Intent(ActivityDiario.this, ActivityListRegistros.class);
+                //intent2.putExtras(miBundle);
                 startActivity(intent2);
 
                 return true;

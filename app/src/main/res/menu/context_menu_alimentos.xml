@@ -3,5 +3,5 @@
     <item android:id="@+id/menu_alimentos"
         android:title="Alimentos"/>
     <item android:id="@+id/menu_receta"
-        android:title="Receta"/>
+        android:title="Registros"/>
 </menu>
