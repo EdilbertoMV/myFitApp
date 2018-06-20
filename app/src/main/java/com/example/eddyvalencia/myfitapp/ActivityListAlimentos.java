@@ -8,6 +8,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,6 +70,9 @@ public class ActivityListAlimentos extends AppCompatActivity {
                 //AQUI DEBE IR EL CONETEXTMENU PARA AGREGAR UN REGISTRO DEBE SER DE DOS OPCIONES PREGUNTAR SI SE QUIERE AGREGAR
                 //EL ALIMENTO O NO, AL AGREGARSE OBVIAMENTE DEBES CREAR UNA CONSULTA SQL PARA AGREGAR EL REGISTRO A LA TABLA REGISTROS
 
+                registerForContextMenu(view);
+                openContextMenu(view);
+
                 Toast.makeText(parent.getContext(),"SELECCIONASTE: "
                         +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
             }
@@ -86,6 +92,40 @@ public class ActivityListAlimentos extends AppCompatActivity {
 
 
     }
+
+    //CONTEXT MENU, OPCIONES
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu_registrar, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        Bundle miBundle = new Bundle();
+        miBundle.putString("tipoComida", tipoComida);
+
+        switch (item.getItemId()){
+            case R.id.menu_registrar:
+
+                finish();
+
+                return true;
+            case R.id.menu_no_registrar:
+
+                closeContextMenu();
+
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+
 
     private void consultarListaAlimentos() {
 
